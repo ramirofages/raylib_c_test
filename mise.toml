@@ -1,0 +1,15 @@
+[tasks.build]
+description = "Build dev"
+run_windows = [
+  "mkdir build >nul 2>&1 || exit /b 0",
+  "gcc -o build/main.exe main.c -I include -L lib -lraylib -lgdi32 -lwinmm",
+  ".\\build\\main.exe"
+]
+
+[tasks.build_prod]
+description = "Build prod"
+run_windows = [
+  "mkdir build >nul 2>&1 || exit /b 0",
+  "gcc -o build/main_prod.exe hello.c -I include -L lib -lraylib -lgdi32 -lwinmm -O3 -DNDEBUG -s -flto -mwindows", 
+  ".\\build\\main_prod.exe"
+]
