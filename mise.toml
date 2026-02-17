@@ -1,15 +1,23 @@
 [tasks.build]
 description = "Build dev"
+run = [
+  "mkdir build -p",
+  "gcc main.c -o build/main -I include -L lib/linux -lraylib -lGL -lm -lpthread -ldl -lrt -lX11",
+  "build/main"
+]
 run_windows = [
   "mkdir build >nul 2>&1 || exit /b 0",
-  "gcc -o build/main.exe main.c -I include -L lib -lraylib -lgdi32 -lwinmm",
+  "gcc -o build/main.exe main.c -I include -L lib/win -lraylib -lgdi32 -lwinmm",
   ".\\build\\main.exe"
 ]
 
 [tasks.build_prod]
 description = "Build prod"
+run = [
+  "echo asd"
+]
 run_windows = [
   "mkdir build >nul 2>&1 || exit /b 0",
-  "gcc -o build/main_prod.exe hello.c -I include -L lib -lraylib -lgdi32 -lwinmm -O3 -DNDEBUG -s -flto -mwindows", 
+  "gcc -o build/main_prod.exe hello.c -I include -L lib/win -lraylib -lgdi32 -lwinmm -O3 -DNDEBUG -s -flto -mwindows", 
   ".\\build\\main_prod.exe"
 ]
