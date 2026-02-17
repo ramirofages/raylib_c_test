@@ -27,19 +27,11 @@ int main() {
   {
     for(int w = 0; w < width; w++)
     {
-      int r_index = h * width * 4 + w * 4 + 0;
-      int g_index = h * width * 4 + w * 4 + 1;
-      int b_index = h * width * 4 + w * 4 + 2;
-      int a_index = h * width * 4 + w * 4 + 3;
-      pixels[r_index] = 255;
-      pixels[g_index] = 0;
-      pixels[b_index] = 0;
-      pixels[a_index] = 255;
-      // printf("line %d\n", r_index);
-      // printf("line %d\n", g_index);
-      // printf("line %d\n", b_index);
-      // printf("line %d\n", a_index);
-      // printf("new line\n\n");
+      int pixel_index = h * width * 4 + w * 4;
+      pixels[pixel_index + 0] = 255;
+      pixels[pixel_index + 1] = 0;
+      pixels[pixel_index + 2] = 0;
+      pixels[pixel_index + 3] = 255;
     }
   }
 
@@ -55,7 +47,4 @@ int main() {
   CloseWindow();
   return 0;
 }
-
-//gcc -o hello.exe hello.c -I include -L lib -lraylib -lgdi32 -lwinmm
-// gcc -o hello.exe hello.c -I include -L lib -lraylib -lgdi32 -lwinmm -O3 -DNDEBUG -s -flto -mwindows
 
